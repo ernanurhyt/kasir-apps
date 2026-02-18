@@ -1,0 +1,224 @@
+/* css for Loginform.js */
+
+/* Warna sama dengan wrapper */
+/* html, body {
+    background-color: rgb(201, 101, 0); 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+} */
+
+.wrapper {
+    background-color: rgb(201, 101, 0);
+    background-size: cover;
+    min-height: 100vh; /* Full viewport height */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.wrapper {
+    background-color: rgb(201, 101, 0);
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.wrapper .center {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    font-family: sans-serif;
+    user-select: none;
+    padding: 20px;
+}
+
+.center h1 {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    line-height: 1.2;
+    margin: 0 auto;
+}
+
+.center h2 {
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    line-height: 1.2;
+    margin: 10px auto 0;
+}
+
+.center .buttons {
+    margin: 35px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+}
+
+.buttons button {
+    height: 50px;
+    min-width: 150px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #920000;
+    background: rgb(242, 156, 18);
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #920000;
+    border-radius: 25px;
+    transition: .4s;
+    padding: 0 20px;
+}
+
+.buttons .btn2 {
+    margin-left: 0; /* Diganti dengan gap */
+}
+
+.buttons button:hover {
+    background: rgb(180, 92, 3);
+}
+
+/* Media Queries untuk Responsivitas */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .center h1 {
+        font-size: 40px;
+        max-width: 800px;
+    }
+    
+    .center h2 {
+        font-size: 50px;
+        max-width: 700px;
+    }
+    
+    .center .buttons {
+        margin: 30px auto;
+        max-width: 600px;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+    .wrapper {
+        min-height: 60vh;
+    }
+    
+    .center h1 {
+        font-size: 32px;
+        max-width: 600px;
+    }
+    
+    .center h2 {
+        font-size: 40px;
+        max-width: 500px;
+    }
+    
+    .buttons button {
+        height: 45px;
+        min-width: 140px;
+        font-size: 16px;
+    }
+    
+    .center .buttons {
+        margin: 25px auto;
+        gap: 15px;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .wrapper {
+        min-height: 50vh;
+        padding: 15px;
+    }
+    
+    .center {
+        padding: 15px;
+    }
+    
+    .center h1 {
+        font-size: 26px;
+        max-width: 100%;
+    }
+    
+    .center h2 {
+        font-size: 32px;
+        max-width: 100%;
+        margin-top: 8px;
+    }
+    
+    .center .buttons {
+        margin: 20px auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        max-width: 300px;
+    }
+    
+    .buttons button {
+        width: 100%;
+        max-width: 250px;
+        height: 50px;
+        font-size: 17px;
+    }
+    
+    .error {
+        font-size: 12px;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+    .center h1 {
+        font-size: 22px;
+    }
+    
+    .center h2 {
+        font-size: 28px;
+    }
+    
+    .buttons button {
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+
+/* css for Menus.js */
+
+.card-clickable {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card-clickable:active {
+  background-color: #FFE5B4 !important;
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+}
+
+/* Efek hover biasa */
+.card-clickable:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+}
