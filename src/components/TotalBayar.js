@@ -29,7 +29,7 @@ export default class TotalBayar extends Component {
             }
             
             //SEND TO DB SUPABASE
-            const url = "https://web-production-80a65.up.railway.app/saveorder"
+            const url = "http://localhost:8000/saveorder"
             axios
             .post(url,pesanan)// .post(API_URL+"pesanans",pesanan)
             .then((res) =>{

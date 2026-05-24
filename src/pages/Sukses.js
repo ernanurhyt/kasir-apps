@@ -7,13 +7,13 @@ import { API_URL } from '../utils/constants';
 export default class Sukses extends Component {
     componentDidMount(){
         axios
-        .get("https://web-production-80a65.up.railway.app/keranjangs")
+        .get("http://localhost:8000/keranjangs")
         .then(res => {
           // console.log("Response: ", res);
           const keranjangs = res.data;
          keranjangs.map(function(item){
              return axios
-                    .delete("https://web-production-80a65.up.railway.app/keranjangs/"+item.id)
+                    .delete("http://localhost:8000/keranjangs/"+item.id)
                     .then((res) => console.log(res))
                     .catch((error) => console.log(error))
          })

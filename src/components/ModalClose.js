@@ -81,7 +81,7 @@ const ModalClose = ({
             Status_serve: true,
             Modify_by: username
         };
-        const url = "https://web-production-80a65.up.railway.app/ordertransaksi";
+        const url = "http://localhost:8000/ordertransaksi";
         axios
         .put(url, dataordertrans)
         .then((res) => {
@@ -100,7 +100,7 @@ const ModalClose = ({
             alert("Uang tidak boleh kurang!");
             return; // Berhenti di sini, tidak lanjut ke verifikasi
         }
-            const url = "https://web-production-80a65.up.railway.app/getverify";
+            const url = "http://localhost:8000/getverify";
             axios.post(url, { password: Verify })
                 .then(res => {
                     if (res.data.verify === true) {
@@ -135,7 +135,7 @@ const ModalClose = ({
             // alert("Pembayarancash:" + (parseFloat(uangDibayar) - parseFloat(nominalqris) + parseFloat(selisihuang)));
             // alert("Total_bayar:" + totalBayar)
             
-            const url = "https://web-production-80a65.up.railway.app/ordertransaksi";
+            const url = "http://localhost:8000/ordertransaksi";
             axios
             .put(url, dataordertrans)
             .then((res) => {

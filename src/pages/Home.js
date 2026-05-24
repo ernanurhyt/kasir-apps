@@ -53,7 +53,7 @@ class Home extends Component {
   // };
 
   getProductsByCategory = (category) => {
-    const url = "https://web-production-80a65.up.railway.app/menulist";
+    const url = "http://localhost:8000/menulist";
     axios
       .get(url) // .get('/data/db.json')// .get(API_URL + "products?category.nama=" + category)
       .then(res => {
@@ -195,7 +195,7 @@ class Home extends Component {
     const namastand = user.first_name;
     // alert(`Nama Stand: ${namastand}`); // Untuk debugging
 
-    const url = "https://web-production-80a65.up.railway.app/jumlahhabis/" + namastand;
+    const url = "http://localhost:8000/jumlahhabis/" + namastand;
     axios
       .post(url)
       .then(res => {

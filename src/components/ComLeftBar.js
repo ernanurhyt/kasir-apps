@@ -22,7 +22,7 @@ export default class ComLeftBar extends Component {
     }
 
     componentDidMount() {
-        const url = "https://web-production-80a65.up.railway.app/categorylist";
+        const url = "http://localhost:8000/categorylist";
         axios
             .get(url) 
             .then(res => {

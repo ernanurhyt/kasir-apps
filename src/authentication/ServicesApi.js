@@ -1,5 +1,5 @@
 // services/api.js
-const API_URL = 'https://web-production-80a65.up.railway.app/api';
+const API_URL = 'http://localhost:8000/api';
 
 // Helper function untuk API calls dengan auth
 export const authFetch = async (endpoint, options = {}) => {

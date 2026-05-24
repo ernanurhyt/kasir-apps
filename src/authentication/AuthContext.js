@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'https://web-production-80a65.up.railway.app/api'; // Django server
+  const API_URL = 'http://localhost:8000/api'; // Django server
 
   // Check auth status saat app load
   useEffect(() => {

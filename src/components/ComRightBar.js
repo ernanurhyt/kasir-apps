@@ -26,7 +26,7 @@ export default class ComRightBar extends Component {
   }
 
   getTopping = () => {
-    const url = "https://web-production-80a65.up.railway.app/toppinglist";
+    const url = "http://localhost:8000/toppinglist";
     axios
       .get(url)// .get('/data/db.json')
       .then(res => {
