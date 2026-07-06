@@ -1,0 +1,187 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "nama": "Makanan"
+    }
+    ,{
+      "id": 2,
+      "nama": "Minuman"
+    }
+    ,{
+      "id": 3,
+      "nama": "Cemilan"
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "kode": "K-01",
+      "nama": "Dimsum Mentai Premium",
+      "harga": 30000,
+      "is_ready": true,
+      "gambar": "mentay.webp",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+    {
+      "id": 2,
+      "kode": "K-02",
+      "nama": "Dimsum Mentai Cheese",
+      "harga": 27000,
+      "is_ready": true,
+      "gambar": "cheese.png",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+    {
+      "id": 3,
+      "kode": "K-03",
+      "nama": "Dimsum Saus Tar-tar",
+      "harga": 27000,
+      "is_ready": true,
+      "gambar": "tartar.webp ",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+    {
+      "id": 4,
+      "kode": "K-04",
+      "nama": "Dimsum Saus Bolognese",
+      "harga": 30000,
+      "is_ready": true,
+      "gambar": "bolognese.webp",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+    {
+      "id": 5,
+      "kode": "K-05",
+      "nama": "Dimsum Bakar / Panggang",
+      "harga": 30000,
+      "is_ready": true,
+      "gambar": "bakar.png",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+    {
+      "id": 6,
+      "kode": "K-06",
+      "nama": "Dimsum Saus Mix",
+      "harga": 30000,
+      "is_ready": true,
+      "gambar": "mix.png",
+      "category": {
+        "id": 1,
+        "nama": "Makanan"
+      }
+    },
+   
+    {
+      "id": 8,
+      "kode": "K-08",
+      "nama": "Pangsit 6 pcs",
+      "harga": 5000,
+      "is_ready": true,
+      "gambar": "pangsit.jpg",
+      "category": {
+        "id": 3,
+        "nama": "Cemilan"
+      }
+    },
+    {
+      "id": 9,
+      "kode": "K-09",
+      "nama": "Kentang Goreng",
+      "harga": 5000,
+      "is_ready": true,
+      "gambar": "kentang-goreng.jpg",
+      "category": {
+        "id": 3,
+        "nama": "Cemilan"
+      }
+    },
+    {
+      "id": 10,
+      "kode": "K-010",
+      "nama": "Cheese Burger",
+      "harga": 15000,
+      "is_ready": true,
+      "gambar": "cheese-burger.jpg",
+      "category": {
+        "id": 3,
+        "nama": "Cemilan"
+      }
+    },
+    {
+      "id": 11,
+      "kode": "K-011",
+      "nama": "Coffe Late",
+      "harga": 15000,
+      "is_ready": true,
+      "gambar": "coffe-late.jpg",
+      "category": {
+        "id": 2,
+        "nama": "Minuman"
+      }
+    },
+    {
+      "id": 12,
+      "kode": "K-012",
+      "nama": "Es Jeruk",
+      "harga": 7000,
+      "is_ready": true,
+      "gambar": "es-jeruk.jpg",
+      "category": {
+        "id": 2,
+        "nama": "Minuman"
+      }
+    },
+    {
+      "id": 13,
+      "kode": "K-013",
+      "nama": "Es Teh",
+      "harga": 5000,
+      "is_ready": true,
+      "gambar": "es-teh.jpg",
+      "category": {
+        "id": 2,
+        "nama": "Minuman"
+      }
+    },
+    {
+      "id": 14,
+      "kode": "K-014",
+      "nama": "Teh Hangat",
+      "harga": 3000,
+      "is_ready": true,
+      "gambar": "teh-hangat.jpg",
+      "category": {
+        "id": 2,
+        "nama": "Minuman"
+      }
+    }
+  ],
+  "topping": [
+    {
+      "nama": "Mozarela",
+      "harga": 5000
+    }
+    ,{
+      "nama": "Keju Slice",
+      "harga": 2000
+    }
+  ],
+  "keranjangs": [],
+  "pesanans": []
+}
