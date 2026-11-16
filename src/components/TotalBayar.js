@@ -65,23 +65,23 @@ export default class TotalBayar extends Component {
             alert("User tidak ditemukan");
         }
         // alert("save the order")
-       this.props.history.push('/sukses')
-        // //SEND TO DB SUPABASE
-        // const url = "http://localhost:8000/saveorder"
-        // // alert(JSON.stringify(pesanan))
-        // console.log(JSON.stringify(pesanan))
-        // axios
-        // .post(url,pesanan)// .post(API_URL+"pesanans",pesanan)
-        // .then((res) =>{            
-        //     // alert(res.data.format_noantri)
-        //     if (res.data.status === 'success') {
-        //         // this.props.history.push('/sukses')
-        //         this.handleShowStruk(res.data.noantri, res.data.format_noantri)
-        //     } else {
-        //         alert("Gagal membuat orderan");
-        //     }
-        // })
-        // localStorage.removeItem('keranjang');
+        // this.props.history.push('/sukses')
+        //SEND TO DB SUPABASE
+        const url = "http://localhost:8000/saveorder"
+        // alert(JSON.stringify(pesanan))
+        console.log(JSON.stringify(pesanan))
+        axios
+        .post(url,pesanan)// .post(API_URL+"pesanans",pesanan)
+        .then((res) =>{            
+            // alert(res.data.format_noantri)
+            if (res.data.status === 'success') {
+                // this.props.history.push('/sukses')
+                this.handleShowStruk(res.data.noantri, res.data.format_noantri)
+            } else {
+                alert("Gagal membuat orderan");
+            }
+        })
+        localStorage.removeItem('keranjang');
     }
 
     }
