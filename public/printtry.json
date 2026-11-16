@@ -1,0 +1,20 @@
+[
+  { "type": 0, "content": "Toko Saya", "bold": 1, "align": 1, "format": 3 },
+  { "type": 0, "content": "Jl. Contoh No. 123", "bold": 0, "align": 1, "format": 0 },
+  { "type": 0, "content": " ", "bold": 0, "align": 0, "format": 0 },
+  { "type": 0, "content": "No: #123", "bold": 0, "align": 0, "format": 0 },
+  { "type": 0, "content": "Tanggal: 16/11/2026 10:30:00", "bold": 0, "align": 0, "format": 0 },
+  { "type": 0, "content": "--------------------------------", "bold": 0, "align": 1, "format": 0 },
+  { "type": 0, "content": "Kopi Susu", "bold": 0, "align": 0, "format": 0 },
+  { "type": 0, "content": "  2 x 18.000 = 36.000", "bold": 0, "align": 2, "format": 0 },
+  { "type": 0, "content": "Roti Bakar", "bold": 0, "align": 0, "format": 0 },
+  { "type": 0, "content": "  1 x 15.000 = 15.000", "bold": 0, "align": 2, "format": 0 },
+  { "type": 0, "content": "--------------------------------", "bold": 0, "align": 1, "format": 0 },
+  { "type": 0, "content": "TOTAL: Rp 51.000", "bold": 1, "align": 2, "format": 1 },
+  { "type": 0, "content": "Bayar: Rp 60.000", "bold": 0, "align": 2, "format": 0 },
+  { "type": 0, "content": "Kembali: Rp 9.000", "bold": 0, "align": 2, "format": 0 },
+  { "type": 0, "content": " ", "bold": 0, "align": 0, "format": 0 },
+  { "type": 4, "content": "<center><span style=\"font-weight:bold; font-size:16px;\">Terima Kasih!</span></center>" },
+  { "type": 3, "value": "https://mydomain.com/receipt/123", "size": 40, "align": 1 },
+  { "type": 2, "value": "123", "width": 100, "height": 50, "align": 1 }
+]
