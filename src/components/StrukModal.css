@@ -1,0 +1,272 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  max-width: 420px;
+  width: 100%;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: sticky;
+  top: 5px;
+  float: right;
+  background: #dc3545;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+  z-index: 10;
+  font-weight: bold;
+}
+
+.modal-close:hover {
+  background: #c82333;
+}
+
+/* Struk Container - Seperti Kertas Struk */
+.struk-container {
+  padding: 15px 20px 20px;
+  background: white;
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 13px;
+  color: #000;
+}
+
+/* Header */
+.struk-header {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.struk-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  letter-spacing: 3px;
+}
+
+.struk-header p {
+  margin: 2px 0;
+  font-size: 12px;
+  color: #333;
+}
+
+/* Garis putus-putus */
+.line-dashed {
+  border: none;
+  border-top: 1px dashed #333;
+  margin: 8px 0;
+}
+
+/* Info Transaksi */
+.info-transaksi {
+  margin: 8px 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-size: 12px;
+}
+
+.info-row span:first-child {
+  color: #555;
+}
+
+.info-row span:last-child {
+  font-weight: 600;
+}
+
+/* Daftar Belanja */
+.belanja-section {
+  margin: 8px 0;
+}
+
+.belanja-header {
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 1fr 1fr;
+  gap: 5px;
+  padding: 5px 0;
+  font-weight: bold;
+  font-size: 11px;
+  border-bottom: 1px solid #333;
+  text-transform: uppercase;
+}
+
+.belanja-item {
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 1fr 1fr;
+  gap: 5px;
+  padding: 4px 0;
+  font-size: 12px;
+  border-bottom: 1px dotted #ddd;
+}
+
+.belanja-item:last-child {
+  border-bottom: none;
+}
+
+.col-item {
+  word-break: break-word;
+}
+
+.col-qty {
+  text-align: center;
+}
+
+.col-price,
+.col-subtotal {
+  text-align: right;
+}
+
+/* Total */
+.total-section {
+  margin: 8px 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.total-row:first-child {
+  font-size: 16px;
+  border-top: 2px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 8px 0;
+  margin-bottom: 4px;
+}
+
+.total-row:first-child span {
+  font-weight: bold;
+}
+
+/* Footer */
+.footer-struk {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer-struk p {
+  margin: 3px 0;
+  font-size: 11px;
+}
+
+.footer-struk .small {
+  font-size: 10px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Tombol */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.btn-print,
+.btn-close {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-print {
+  background: #28a745;
+  color: white;
+}
+
+.btn-print:hover {
+  background: #218838;
+}
+
+.btn-close {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-close:hover {
+  background: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .modal-content {
+    max-width: 100%;
+    margin: 10px;
+  }
+  
+  .struk-container {
+    padding: 12px 15px 15px;
+    font-size: 12px;
+  }
+  
+  .struk-header h2 {
+    font-size: 18px;
+  }
+  
+  .belanja-header,
+  .belanja-item {
+    font-size: 11px;
+    grid-template-columns: 1.8fr 0.5fr 1fr 1fr;
+  }
+  
+  .total-row:first-child {
+    font-size: 14px;
+  }
+  
+  .btn-print,
+  .btn-close {
+    padding: 6px 15px;
+    font-size: 12px;
+  }
+}
+
+/* Scrollbar */
+.modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
