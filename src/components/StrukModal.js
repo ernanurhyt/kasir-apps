@@ -1,10 +1,14 @@
 import React from 'react';
 import './StrukModal.css';
+import { QumraWebUsbPrinter } from '@qumra/webusb';
+
+// Instance printer dibuat sekali di luar komponen
+const printer = new QumraWebUsbPrinter();
 
 const StrukModal = ({ showModal, onClose, data }) => {
   if (!showModal) return null;
 
-  // Fungsi untuk format tanggal
+  // Fungsi format tanggal
   const formatDateTime = (date) => {
     const options = {
       year: 'numeric',
@@ -12,38 +16,21 @@ const StrukModal = ({ showModal, onClose, data }) => {
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit',
     };
     return new Date(date).toLocaleDateString('id-ID', options);
   };
 
-  // Fungsi untuk format rupiah
+  // Fungsi format rupiah
   const formatRupiah = (angka) => {
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
       currency: 'IDR',
-      minimumFractionDigits: 0
+      minimumFractionDigits: 0,
     }).format(angka);
   };
 
-  const strukData = data 
-  // || {
-  //   namaToko: 'INDOMARET',
-  //   alamat: 'Jl. Raya No. 123, Jakarta',
-  //   namaStand: 'Stand A',
-  //   noAntrian: 1,
-  //   formatNoAntrian: '150826_1',
-  //   namaPemesan: 'Budi Santoso',
-  //   tanggalPemesanan: new Date().toISOString(),
-  //   pesanan: [
-  //     { nama: 'Indomie Goreng', harga: 3500, jumlah: 2, subtotal: 7000 },
-  //     { nama: 'Teh Botol Sosro', harga: 5000, jumlah: 1, subtotal: 5000 },
-  //     { nama: 'Roti Tawar', harga: 12000, jumlah: 1, subtotal: 12000 }
-  //   ],
-  //   total: 24000,
-  //   penutup: 'Terima Kasih'
-  // }
-  ;
+  const strukData = data;
 
   const {
     namaToko,
@@ -55,21 +42,88 @@ const StrukModal = ({ showModal, onClose, data }) => {
     tanggalPemesanan,
     pesanan,
     total,
-    penutup
+    penutup,
   } = strukData;
+
+  // ===== FUNGSI CETAK VIA WEBUSB =====
+  const handleWebUSBPrint = async () => {
+    try {
+      // Hubungkan ke printer (harus dipicu klik pengguna)
+      await printer.connect();
+
+      // Lebar kertas 58mm ≈ 32 karakter
+      const LINE_WIDTH = 32;
+      const center = (text) => {
+        const t = String(text || '');
+        if (t.length >= LINE_WIDTH) return t.substring(0, LINE_WIDTH);
+        const pad = Math.floor((LINE_WIDTH - t.length) / 2);
+        return ' '.repeat(pad > 0 ? pad : 0) + t;
+      };
+      const leftRight = (left, right) => {
+        const l = String(left || '');
+        const r = String(right || '');
+        const space = LINE_WIDTH - l.length - r.length;
+        return l + ' '.repeat(space > 0 ? space : 1) + r;
+      };
+      const line = '-'.repeat(LINE_WIDTH) + '\n';
+
+      let receipt = '';
+      receipt += center(namaToko) + '\n';
+      receipt += center(alamat) + '\n';
+      receipt += center('Telp: 021-1234567') + '\n';
+      receipt += '\n';
+      receipt += center(`No Antrian: ${noAntrian}`) + '\n';
+      receipt += line;
+      receipt += `No. Antrian : ${formatNoAntrian}\n`;
+      receipt += `Kasir       : ${namaStand}\n`;
+      receipt += `Pemesan     : ${namaPemesan}\n`;
+      receipt += `Tanggal     : ${formatDateTime(tanggalPemesanan)}\n`;
+      receipt += line;
+
+      pesanan.forEach((item) => {
+        receipt += `${item.product.Nama}\n`;
+        receipt += leftRight(
+          `  ${item.jumlah} x ${Number(item.product.Harga).toLocaleString('id-ID')}`,
+          Number(item.total_harga).toLocaleString('id-ID')
+        ) + '\n';
+      });
+
+      receipt += line;
+      receipt += leftRight('TOTAL', Number(total).toLocaleString('id-ID')) + '\n';
+      receipt += leftRight('Tunai', Number(total).toLocaleString('id-ID')) + '\n';
+      receipt += leftRight('Kembali', '0') + '\n';
+      receipt += '\n';
+      receipt += center(penutup) + '\n';
+      receipt += center('Harap cek kembali orderan') + '\n';
+      receipt += center('Selamat Menikmati :)') + '\n';
+      receipt += '\n\n\n';
+      receipt += '\x1D\x56\x00'; // Potong kertas
+
+      const dataBytes = new TextEncoder().encode(receipt);
+      await printer.print(dataBytes);
+
+      alert('✅ Berhasil dicetak via USB!');
+    } catch (err) {
+      console.error(err);
+      alert(`❌ Gagal mencetak via USB: ${err.message}`);
+    }
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>✕</button>
-        
+
         <div className="struk-container">
           {/* Header - Nama Toko */}
           <div className="struk-header">
             <h2>{namaToko}</h2>
             <p>{alamat}</p>
             <p>Telp: 021-1234567</p>
-           <p>No antri: <span style={{ fontSize: '3em', fontWeight: 'bold' }}>{noAntrian}</span></p>
+            <p>
+              No antri:{' '}
+              <span style={{ fontSize: '3em', fontWeight: 'bold' }}>{noAntrian}</span>
+            </p>
             <div className="line-dashed"></div>
           </div>
 
@@ -103,7 +157,7 @@ const StrukModal = ({ showModal, onClose, data }) => {
               <span className="col-price">Harga</span>
               <span className="col-subtotal">Total</span>
             </div>
-            
+
             {pesanan.map((item, index) => (
               <div key={index} className="belanja-item">
                 <span className="col-item">{item.product.Nama}</span>
@@ -122,7 +176,6 @@ const StrukModal = ({ showModal, onClose, data }) => {
               <span><strong>TOTAL</strong></span>
               <span><strong>{formatRupiah(total)}</strong></span>
             </div>
-            
             <div className="total-row">
               <span>Tunai</span>
               <span>{formatRupiah(total)}</span>
@@ -139,12 +192,11 @@ const StrukModal = ({ showModal, onClose, data }) => {
           <div className="footer-struk">
             <p>{penutup}</p>
             <p>Harap cek kembali orderan sebelum meninggalkan stand</p>
-            <p className="small">Selamat Menikmati😊 </p>
-            {/* <p className="small">www.indomaret.co.id</p> */}
-            
+            <p className="small">Selamat Menikmati😊</p>
+
             <div className="button-group">
-              <button onClick={() => window.print()} className="btn-print">
-                🖨️ Cetak
+              <button onClick={handleWebUSBPrint} className="btn-print">
+                🖨️ Cetak (USB)
               </button>
               <button onClick={onClose} className="btn-close">
                 Tutup
